@@ -1,0 +1,205 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>主页</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="{% static 'blog/assets/images/timg.jpg' %}"/>
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <!--"{% static 'blog/assets/css/theme-color/default-theme.css' %}" -->
+    <link href="{% static 'blog/assets/css/bootstrap.min.css' %}"rel="stylesheet">
+    <!-- Slick slider -->
+    <link href="{% static 'blog/assets/css/slick.css' %}" rel="stylesheet">
+    <!-- Gallery Lightbox -->
+    <link href="{% static 'blog/assets/css/magnific-popup.css' %}" rel="stylesheet">
+    <!-- Theme color -->
+    <link id="switcher" href="{% static 'blog/assets/css/theme-color/default-theme.css' %}" rel="stylesheet">
+
+    <!-- Main Style -->
+    <link href="{% static 'blog/style.css' %}"  rel="stylesheet">
+    <!-- Fonts -->
+
+    <!-- Open Sans for body font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800" rel="stylesheet">
+    <!-- Poppins for Title -->
+  	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+ 
+ 
+	
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  	
+  	<!-- Start Header -->
+	<header id="mu-header" class="" role="banner">
+		<div class="container">
+			<nav class="navbar navbar-default mu-navbar">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+
+		      <!-- Text Logo -->
+		      <a class="navbar-brand" >Django</a>
+		      <!-- Image Logo -->
+		      <!-- <a class="navbar-brand" href="#"><img src="assets/images/logo.png"></a> -->
+
+
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      	<ul class="nav navbar-nav mu-menu navbar-right">
+		          <li><a href="/">主页</a></li>
+		          <li><a href="/#mu-portfolio">文章</a></li>
+		          {% if login_state %}
+		          	<li><a href="{% url 'login:logout' %}">注销</a></li>
+		          {% else %}
+		          	<li><a href="/login">请登陆/注册</a></li>
+		          {% endif %}
+		          <li><a >{{username}} 你好呀:)</a></li>
+		      	</ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+		</div>
+	</header>
+	<!-- End Header -->
+
+	<!-- Start Featured Slider -->
+
+	<section id="mu-featured-slider">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="mu-featured-area">
+						<h1>So Blog</h1>
+						<!-- Start text slide -->
+						<div class="mu-featured-slider-wrapper">
+							<div class="mu-featured-slider" id="typed-strings">
+								{% for tag in tags %}
+									<p>目前有<span>{{tag.tag}}</span></p>
+		   						{% endfor %}
+							</div>
+							<span id="typed"></span>
+						</div>
+						<!-- Start text slide -->
+						
+						<div class="mu-featured-content">
+							<p>Once when I was six years old I saw a magnificent picture in a book, called True Stories from Nature, about the primeval forest. It was a picture of a boa constrictor in the act of swallowing an animal. Here is a copy of the drawing.n the book it said: "Boa constrictors swallow their prey whole, without chewing it. After that they are not able to move, and they sleep through the six months that they need for digestion."I pondered deeply, then, over the adventures of the jungle. And after some work with a colored pencil I succeeded in making my first drawing. My Drawing Number One. It looked like this:</p>
+							<a href="#mu-portfolio" class="mu-primary-btn view-my-work-btn">浏览我的文章</a>
+						</div>
+
+					</div>
+				</div>			
+			</div>
+		</div>
+	</section>
+	
+	<!-- Start Featured Slider -->
+	
+	<!-- Start main content -->
+		
+	<main role="main">
+		<!-- Start Portfolio -->
+		<section id="mu-portfolio">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="mu-portfolio-area">
+							<div class="mu-portfolio-header">
+								<h2 class="mu-heading-title">全部文章</h2>
+								<span class="mu-header-dot"></span>
+							</div>
+
+							<!-- Start Portfolio Filter -->
+							<div class="mu-portfolio-filter-area">
+								<ul class="mu-simplefilter">
+					                <li class="active" data-filter="all">ALL</li>
+					                {% for tag in tags %}
+						                <li data-filter="{{tag.id}}">{{tag.tag}}</li>
+						            {% endfor %}
+					            </ul>
+							</div>
+
+							<!-- Start Portfolio Content -->
+							<div class="mu-portfolio-content">
+								<div class="filtr-container">
+									{% for article in articles %}
+					                <div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="{{article.article_tag_id}}">
+					                	<div class="mu-item-thumbonail">
+					                		<img class="img-responsive" src="https://www.sbkk88.com/uploads/allimg/150522/13444T5L-1.jpg" alt="image">
+					                	</div>
+					                	<div class="mu-filter-item-content">
+					                    	<h4 class="mu-filter-item-title">{{article.article_title}}</h4>
+					                    	<a class="mu-filter-link" href="{% url 'wakanda_forever:article_id' article.id %}" title="文章链接"><i class="fa fa-link"></i></a>
+					                    	
+					                    </div>
+					                </div>
+					                {% endfor %}
+					            </div>
+							</div>
+							<!-- End Portfolio Content -->
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Portfolio -->
+
+	<!-- Start footer -->
+	<footer id="mu-footer" role="contentinfo">
+			<div class="container">
+				<div class="mu-footer-area">
+					<p class="mu-copy-right">&copy; 2019/04/16 So.Blog. Built using Django. Made by Junheng Su
+				</div>
+			</div>
+
+	</footer>
+	<!-- End footer -->
+
+	
+	
+    <!-- jQuery library -->
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Bootstrap -->
+    <!--"{% static 'blog/assets/css/theme-color/default-theme.css' %}"-->
+    <script src="{% static 'blog/assets/js/bootstrap.min.js' %}"></script>
+	<!-- Slick slider -->
+    <script type="text/javascript" src="{% static 'blog/assets/js/slick.min.js' %}"></script>
+    <!-- Filterable Gallery js -->
+    <script type="text/javascript" src="{% static 'blog/assets/js/jquery.filterizr.min.js' %}"></script>
+    <!-- Gallery Lightbox -->
+    <script type="text/javascript" src="{% static 'blog/assets/js/jquery.magnific-popup.min.js' %}"></script>
+    <!-- Ajax contact form  -->
+    <script type="text/javascript" src="{% static 'blog/assets/js/app.js' %}"></script>
+	<!-- Featured Slider -->
+    <script type="text/javascript" src="{% static 'blog/assets/js/typed.min.js' %}"></script>
+    <!-- On scroll JS  -->
+    <script src="{% static 'blog/assets/js/jquery.appear.js' %}"></script>
+	<!-- Progress Bar -->
+    <script type="text/javascript" src="{% static 'blog/assets/js/jquery.lineProgressbar.js' %}"></script>
+    
+	
+    <!-- Custom js -->
+	<script type="text/javascript" src="{% static 'blog/assets/js/custom.js' %}"></script> 
+  </body>
+</html>

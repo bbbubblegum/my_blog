@@ -1,0 +1,141 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>注册页面 </title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="{% static 'login/assets/images/favicon.ico' %}"/>
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <!--"{% static 'login/assets/css/theme-color/default-theme.css' %}" -->
+    <link href="{% static 'login/assets/css/bootstrap.min.css' %}"rel="stylesheet">
+    <!-- Slick slider -->
+    <link href="{% static 'login/assets/css/slick.css' %}" rel="stylesheet">
+    <!-- Gallery Lightbox -->
+    <link href="{% static 'login/assets/css/magnific-popup.css' %}" rel="stylesheet">
+    <!-- Theme color -->
+    <link id="switcher" href="{% static 'login/assets/css/theme-color/default-theme.css' %}" rel="stylesheet">
+
+    <!-- Main Style -->
+    <link href="{% static 'login/style.css' %}"  rel="stylesheet">
+    <!-- Fonts -->
+
+    <!-- Open Sans for body font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800" rel="stylesheet">
+    <!-- Poppins for Title -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"
+ 
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+    
+    <!-- Start Header -->
+    <header id="mu-header" class="" role="banner">
+        <div class="container">
+            <nav class="navbar navbar-default mu-navbar">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <!-- Text Logo -->
+              <a class="navbar-brand" href="/">Django</a>
+
+              <!-- Image Logo -->
+              <!-- <a class="navbar-brand" href="#"><img src="assets/images/logo.png"></a> -->
+
+
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav mu-menu navbar-right">
+                  <li><a href="/">主页</a></li>
+                  <li><a href="/login">登陆/注册</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+        </div>
+    </header>
+    <!-- End Header -->
+    <section id="mu-featured-slider">
+        <div class="container">
+            <div class="row">
+
+                    <div class="mu-featured-area">
+                        <h1>注册页面</h1>
+                        <div class="mu-featured-content">
+                            <p>请输入您的用户名 密码 邮箱 并选择性别进行注册                       
+                            </p>
+                            {% if message %}
+                            <div class="alert alert-warning">{{ message }}</div>
+                            {% endif %}
+                                <form class='form-login' method='post'>
+                                    {% csrf_token %}
+                                    {{ form }}
+                                <p></p>
+                                <input type="submit" class="mu-primary-btn view-my-work-btn" value="提交" />
+
+                                </form>     
+                        </div>
+                    </div>
+                </div>          
+            </div>
+        </div>
+    </section>
+    <!-- Start footer -->
+    <footer id="mu-footer" role="contentinfo">
+            <div class="container">
+                <div class="mu-footer-area">
+                    <p class="mu-copy-right">&copy; "Go and look again at the roses. You will understand now that yours is unique in all the world. Then come back to say goodbye to me, and I will make you a present of a secret." 
+                </div>
+            </div>
+
+    </footer>
+    <!-- End footer -->
+ 
+
+    <!-- jQuery library -->
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Bootstrap -->
+    <!--"{% static 'login/assets/css/theme-color/default-theme.css' %}"-->
+    <script src="{% static 'login/assets/js/bootstrap.min.js' %}"></script>
+  <!-- Slick slider -->
+    <script type="text/javascript" src="{% static 'login/assets/js/slick.min.js' %}"></script>
+    <!-- Filterable Gallery js -->
+    <script type="text/javascript" src="{% static 'login/assets/js/jquery.filterizr.min.js' %}"></script>
+    <!-- Gallery Lightbox -->
+    <script type="text/javascript" src="{% static 'login/assets/js/jquery.magnific-popup.min.js' %}"></script>
+    <!-- Ajax contact form  -->
+    <script type="text/javascript" src="{% static 'login/assets/js/app.js' %}"></script>
+  <!-- Featured Slider -->
+    <script type="text/javascript" src="{% static 'login/assets/js/typed.min.js' %}"></script>
+    <!-- On scroll JS  -->
+    <script src="{% static 'login/assets/js/jquery.appear.js' %}"></script>
+  <!-- Progress Bar -->
+    <script type="text/javascript" src="{% static 'login/assets/js/jquery.lineProgressbar.js' %}"></script>
+    
+  
+    <!-- Custom js -->
+  <script type="text/javascript" src="{% static 'login/assets/js/custom.js' %}"></script> 
+</body>
+</html>
