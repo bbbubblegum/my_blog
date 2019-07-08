@@ -89,8 +89,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'learn',
-        'USER':'root',
-        'PASSWORD':'225881110q',
+
         'HOST':'cdb-0tslvh4f.gz.tencentcdb.com',
         'PORT':'10066'
     
